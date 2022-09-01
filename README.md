@@ -1,25 +1,11 @@
-mkdir TT100K && cd TT100K
+# TT100K数据集标签标签转化为YOLO格式。
+使用训练集中6105张图片，测试集中3065张图片，共计9170张。
+选择数据集类别为45类，和论文中相同。
+项目参考：https://github.com/halftop/TT100K_YOLO_Label
+## 步骤
+- 首先运行json2xml.py 将json转化为.xml，结果为xmlLabel1
 
-wget http://cg.cs.tsinghua.edu.cn/traffic-sign/data_model_code/data.zip
+- 其次运行 `xml2txt.py`将xml转化为YOLO格式。结果为txtLabel1
 
-unzip data.zip
+- 运行total.py,进行信息统计。结果为YOLOtxt
 
-cd ..
-
-git clone --depth=1 https://github.com/AlexeyAB/darknet.git
-
-cd darknet
-
-modify makefile:
-GPU=1
-CUDNN=1
-CUDNN_HALF=1
-OPENCV=1
-LIBSO=1
-ARCH= 
-
-make
-
-cd ..
-
-git clone --depth=1 https://github.com/halftop/TT100K_YOLO_Label.git

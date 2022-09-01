@@ -70,17 +70,20 @@ def  getDirId(dir):  # get the  id list  of id.png
 filedir = "annotations.json"
 annos = json.loads(open(filedir).read())
 
-trainIds =  getDirId("train/")
-testIds =  getDirId("test/")
+trainIds =  getDirId("../../train/")
+testIds =  getDirId("../../test/")
 
 ids = annos["imgs"].keys() #  all img ids in .json 
 
 for id in ids:
+    # print(id)
 	#  json 中的ID图片有待检测目标，且该id图片在 train文件夹中
     if len(annos["imgs"][id]["objects"]) > 0 and (id in trainIds):
         objects = annos["imgs"][id]["objects"]
-        edit_xml(objects, id, dir = "xmlLabel/train")
-        
+        edit_xml(objects, id, dir = "xmlLabel1/train")
+    #
     elif len(annos["imgs"][id]["objects"]) > 0 and (id in testIds):
         objects = annos["imgs"][id]["objects"]
-        edit_xml(objects, id, dir = "xmlLabel/test")
+        edit_xml(objects, id, dir = "xmlLabel1/test")
+    else:
+        print(id)
