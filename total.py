@@ -9,9 +9,9 @@ def getfiles():
     print(filenames)
     total = 0
     for filename in filenames:
-        with open('./YOLOtxt/test.txt','a+') as f:
-            filename = filename[:-4] + '.jpg'
-            f.write('./images/' + filename + '\n')
+        with open('./txtLabel/test.txt','a+') as f:
+            filename = filename[:-4]
+            f.write(filename + '\n')
             total = total + 1
             print(total)
             f.close()
